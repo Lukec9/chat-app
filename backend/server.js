@@ -25,8 +25,16 @@ app.use(
     replaceWith: "_",
   })
 );
-app.use(helmet());
-
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "img-src": ["'self'", "https://avatar.iran.liara.run"], // Add additional sources as needed
+      },
+    },
+  })
+);
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
