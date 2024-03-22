@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import mongoSanitize from "express-mongo-sanitize";
+import helmet from "helmet";
 
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
@@ -24,6 +25,7 @@ app.use(
     replaceWith: "_",
   })
 );
+app.use(helmet());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
