@@ -56,5 +56,5 @@ docs
 # Misc
 *.local
 *.tsbuildinfo
-frontend
+# frontend not getting copied either way so it is unnecessary
 
